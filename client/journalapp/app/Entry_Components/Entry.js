@@ -92,15 +92,16 @@ export default class Entry extends Component {
   allowComments() {
     if (this.props.friendPost) {
       return (
-        <TouchableHighlight style={ styles.commentContainer } underlayColor='#dcdcdc' onPress={ this.addComment }>
-          <Text style={ styles.rating } style={{color: 'blue'}} >Comment</Text>
+        <TouchableHighlight style={ styles.commentContainer } underlayColor='#dcdcdc' onPress={ this.addComment.bind(this) }>
+          <Text style={ styles.rating } style={{color: 'blue'}}>Comment</Text>
         </TouchableHighlight>
       )
     }
   }
 
   addComment() {
-    console.log('yo dawg');
+    // console.log(this.props);
+    this.props.navigator.push({ title: 'CommentScene' })
   }
 
   render() {
@@ -120,7 +121,7 @@ export default class Entry extends Component {
               { this.props.text }     
             </Text>
             <View style={ styles.commentratingContainer }>
-            
+
               { this.allowComments() }
 
               <TouchableHighlight style={ styles.ratingContainer } onPress={ this.likePost }>

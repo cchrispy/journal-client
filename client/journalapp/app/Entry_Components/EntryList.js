@@ -13,7 +13,7 @@ import Swipeout from 'react-native-swipeout';
 import Entry from './Entry';
 import styles from '../styles/EntryListStyles';
 
-var EntryList = ({entries, rerender, userEntries}) => (
+var EntryList = ({entries, rerender, userEntries, navigator}) => (
     <ListView 
       dataSource={entries} 
       style={styles.container} 
@@ -45,7 +45,7 @@ var EntryList = ({entries, rerender, userEntries}) => (
           <Swipeout right={swipeBtn} autoClose='true' backgroundColor='transparent'>
             <Entry id={ rowData.id } votes={ rowData.votes } text={ rowData.text } createdAt={ rowData.createdAt } location={ rowData.location } friendPost={ false } />
           </Swipeout>
-        ) : (<Entry id={ rowData.id } votes={ rowData.votes } text={ rowData.text } createdAt={ rowData.createdAt } location={ rowData.location } friendPost={ true } />)
+        ) : (<Entry id={ rowData.id } votes={ rowData.votes } text={ rowData.text } createdAt={ rowData.createdAt } location={ rowData.location } friendPost={ true } navigator={ navigator }/>)
       }}/>
 )
 
